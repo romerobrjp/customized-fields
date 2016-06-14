@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   before_filter :require_authentication
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where(user: current_user)
   end
 
   def new
@@ -14,24 +14,25 @@ class ContactsController < ApplicationController
   end
 
   def create
-    # @contact = Contact.new(contact_params)
-    #
-    # if @contact.save
-    #   redirect_to @contact, notice: "Contact created successfully"
-    # else
-    #   render action: :new, notice: "Could not save this contact"
-    # end
+    @contact = Contact.new(contact_params)
+    @contact.user = current_user
+
+    if @contact.save
+      redirect_to @contact, notice: "Contact created successfully"
+    else
+      render action: :new, notice: "Could not save this contact"
+    end
   end
 
   def edit
   end
 
   def update
-    # if @contact.update(contact_params)
-    #   redirect_to @contact, notice: "Contact updated successfully"
-    # else
-    #   redirect_to @contact, notice: "Could not update this contact"
-    # end
+    if @contact.update(contact_params)
+      redirect_to @contact, notice: "Contact updated successfully"
+    else
+      redirect_to @contact, notice: "Could not update this contact"
+    end
   end
 
   def destroy
@@ -45,7 +46,7 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:name, :type, :description)
+    params.require(:contact).permit(:name, :email)
   end
 
   def set_contact

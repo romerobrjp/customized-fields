@@ -19,25 +19,35 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+pt-BR:
   activerecord:
     models:
       user:
-        one: 'User'
-        other: 'Users'
+        one: 'Usuário'
+        other: 'Usuários'
   controllers:
     application:
   generic:
-    app_name: 'RD Test'
+    social_networks: 'Redes sociais'
     title: 'Título'
   menu:
     title: 'Menu'
-  models:
+  models:    
     user:
+      cep: 'CEP'
+      cpf: 'CPF'
+      city: Cidade
+      email: E-mail
       my_account: 'Minha conta'
       name: Nome
       password: Senha
       password_confirmation: Confirmação de senha
+      phone1: 'Telefone 1'
+      phone2: 'Telefone 2'
+      state: Estado
+      street: Rua
+      street_complement: 'Complemento'
+      street_number: 'Número'
       surname: Sobrenome
   views:
     application:
@@ -48,7 +58,6 @@ en:
         sign_out: 'Sair'
         remember_password: 'Lembrar senha'
         sign_up: 'Criar conta'
-        permission_denied: 'You must be logged to perform this action'
       are_you_sure: 'Tem certeza?'
       back: 'Voltar'
       destroy: 'Remover'
@@ -125,46 +134,46 @@ en:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: aproximadamente 1 hour
-        other: aproximadamente %{count} hours
+        one: aproximadamente 1 hora
+        other: aproximadamente %{count} horas
       about_x_months:
-        one: aproximadamente 1 month
-        other: aproximadamente %{count} months
+        one: aproximadamente 1 mês
+        other: aproximadamente %{count} meses
       about_x_years:
         one: aproximadamente 1 ano
-        other: aproximadamente %{count} years
+        other: aproximadamente %{count} anos
       almost_x_years:
         one: quase 1 ano
-        other: quase %{count} years
+        other: quase %{count} anos
       half_a_minute: meio minuto
       less_than_x_minutes:
         one: menos de um minuto
-        other: menos de %{count} minutes
+        other: menos de %{count} minutos
       less_than_x_seconds:
         one: menos de 1 segundo
-        other: menos de %{count} seconds
+        other: menos de %{count} segundos
       over_x_years:
         one: mais de 1 ano
-        other: mais de %{count} years
+        other: mais de %{count} anos
       x_days:
         one: 1 dia
-        other: "%{count} days"
+        other: "%{count} dias"
       x_minutes:
         one: 1 minuto
-        other: "%{count} minutes"
+        other: "%{count} minutos"
       x_months:
-        one: 1 month
-        other: "%{count} months"
+        one: 1 mês
+        other: "%{count} meses"
       x_seconds:
         one: 1 segundo
-        other: "%{count} seconds"
+        other: "%{count} segundos"
     prompts:
-      day: Day
-      hour: Hour
-      minute: Minute
-      month: Month
-      second: Second
-      year: Year
+      day: Dia
+      hour: Hora
+      minute: Minuto
+      month: Mês
+      second: Segundo
+      year: Ano
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -182,10 +191,10 @@ en:
       invalid: não é válido
       less_than: deve ser menor que %{count}
       less_than_or_equal_to: deve ser menor ou igual a %{count}
-      not_a_number: it is not a number
-      not_an_integer: it is not an integer number
-      must_br_odd: must be an odd number
-      record_invalid: 'The validation has failed: %{errors}'
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      must_be_odd: deve ser ímpar      
+      record_invalid: 'A validação falhou: %{errors}'
       restrict_dependent_destroy:
         one: Não é possível excluir o registro pois existe um %{record} dependente
         many: Não é possível excluir o registro pois existem %{record} dependentes
