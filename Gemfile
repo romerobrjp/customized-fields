@@ -29,10 +29,6 @@ group :assets do
   gem 'uglifier', '>= 1.3.0'
   # Use CoffeeScript for .coffee assets and views
   gem 'coffee-rails', '~> 4.1.0'
-  # HAML
-  gem 'haml', '~> 4.0.7'
-  # Zurb Foundation
-  gem 'foundation-rails', '~> 5.5.3.2'
 end
 
 # Use Unicorn as the app server
