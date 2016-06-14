@@ -1,0 +1,28 @@
+{
+  "name": "rd-test",
+  "homepage": "https://github.com/romeromfm/rd-test",
+  "authors": [
+    "Romero Meireles <romero.mfm@gmail.com>"
+  ],
+  "description": "Application test for ResultadosDigitais",
+  "main": "",
+  "keywords": [
+    "resultados",
+    "digitais",
+    "rails",
+    "test",
+    "application"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
