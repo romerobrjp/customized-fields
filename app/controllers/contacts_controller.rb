@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :user_fields, only: [:edit, :new, :show]
-  before_filter :require_authentication
+  before_filter :authenticate_user!
 
   def index
     @contacts = Contact.where(user: current_user)    
@@ -39,6 +39,7 @@ class ContactsController < ApplicationController
     custom_fields_params.each do |key, val|
       custom_field = Field.joins(:user).where(user_id: current_user.id, name: key).first
       field_value = FieldValueQuery.new.search.specific(current_user.id, @contact.id, custom_field.id)
+      #field_value = FieldValueQuery.new(custom_field.field_values).search.from_contact(@contact.id))
       
       if field_value.exists?
         field_value.first.update(value: val)
@@ -70,7 +71,7 @@ class ContactsController < ApplicationController
   end
 
   def custom_fields_params
-    params.require(:custom_field).permit!
+    params.fetch(:custom_field, {}).permit!
   end
 
   def set_contact
@@ -78,6 +79,6 @@ class ContactsController < ApplicationController
   end
 
   def user_fields
-    @user_fields = FieldQuery.new.search.from_user(current_user)
+    @user_fields = current_user.fields
   end
 end
