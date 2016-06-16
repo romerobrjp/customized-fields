@@ -4,7 +4,7 @@
 function display_combobox_aux_field() {
   var sel_val = $('#field_field_type').val();
   
-  if (sel_val == 'select_tag')
+  if (sel_val == 'combobox')
     $('#combobox_aux_field').show();
   else
     $('#combobox_aux_field').hide();

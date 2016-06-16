@@ -23,7 +23,7 @@
         </h4>
         <br />
 
-        <% if Field.types[@field.field_type] == Field.types[:select_tag] %>
+        <% if Field.types[@field.field_type] == Field.types[:combobox] %>
           <h4>
             <strong> Options: </strong>
             <%= select_tag @field.name, options_from_collection_for_select(options_string_to_hash(@field.combobox_key_values), :first, :last) %>
