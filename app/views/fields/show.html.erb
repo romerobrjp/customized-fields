@@ -1,4 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-centered">
+    <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_field_path(@field) %> |
-<%= link_to 'Back', fields_path %>
+    <div class="panel panel-default">
+      <div class="panel-heading text-center"><h3>Field details</h3></div>
+      <div class="panel-body">
+        <h4>
+          <strong> Name: </strong>
+          <%= @field.name %>
+        </h4>
+        <br/>
+
+        <h4>
+          <strong> Field type: </strong>
+          <%= Field.types[@field.field_type] %>
+        </h4>
+        <br />
+
+        <h4>
+          <strong> Description: </strong>
+          <%= @field.description%>
+        </h4>
+        <br/>
+      </div>
+    </div>
+
+    <div class="actions text-center">
+      <%= link_to 'Edit', edit_field_path(@field), class: 'btn btn-warning' %>
+      <%= link_to 'Back', fields_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

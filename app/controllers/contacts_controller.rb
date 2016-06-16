@@ -1,9 +1,10 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :user_fields, only: [:edit, :new, :show]
   before_filter :require_authentication
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where(user: current_user)    
   end
 
   def new
@@ -14,41 +15,69 @@ class ContactsController < ApplicationController
   end
 
   def create
-    # @contact = Contact.new(contact_params)
-    #
-    # if @contact.save
-    #   redirect_to @contact, notice: "Contact created successfully"
-    # else
-    #   render action: :new, notice: "Could not save this contact"
-    # end
+    @contact = Contact.new(contact_params)
+    @contact.user = current_user
+
+    custom_fields_params.each do |key, val|
+      custom_field = Field.joins(:user).where(user_id: current_user.id, name: key).first
+      field_value = FieldValue.new(value: val, user_id: current_user.id, contact: @contact, field_id: custom_field.id)
+      field_value.save
+    end
+
+    if @contact.save
+      redirect_to :contacts, notice: "Contact created successfully"
+    else
+      render action: :new, notice: "Could not save this contact"
+    end
   end
 
   def edit
+
   end
 
   def update
-    # if @contact.update(contact_params)
-    #   redirect_to @contact, notice: "Contact updated successfully"
-    # else
-    #   redirect_to @contact, notice: "Could not update this contact"
-    # end
+    custom_fields_params.each do |key, val|
+      custom_field = Field.joins(:user).where(user_id: current_user.id, name: key).first
+      field_value = FieldValueQuery.new.search.specific(current_user.id, @contact.id, custom_field.id)
+      byebug
+      if field_value.exists?
+        field_value.first.update(value: val)
+      else
+        field_value = FieldValue.new(value: val, user_id: current_user.id, contact: @contact, field_id: custom_field.id)
+        field_value.save
+      end
+    end
+
+    if @contact.update(contact_params)
+      redirect_to contacts_path, notice: "Contact updated successfully"
+    else
+      redirect_to :contacts, notice: "Could not update this contact"
+    end
   end
 
   def destroy
     if @contact.destroy
-      redirect_to @contact, notice: "Contact removed successfully"
+      redirect_to :contacts, notice: "Contact removed successfully"
     else
-      redirect_to @contact, notice: "Contact could not be removed"
+      redirect_to :contacts, notice: "Contact could not be removed"
     end
   end
 
   private
 
   def contact_params
-    params.require(:contact).permit(:name, :type, :description)
+    params.require(:contact).permit(:name, :email)
+  end
+
+  def custom_fields_params
+    params.require(:custom_field).permit!
   end
 
   def set_contact
     @contact = Contact.find(params[:id])
+  end
+
+  def user_fields
+    @user_fields = FieldQuery.new.search.from_user(current_user)
   end
 end

@@ -12,11 +12,11 @@
  *
  *= require_tree .
  *= require_self
-
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-select";
 
 body > .container {
   margin-top: 3em;
@@ -41,4 +41,14 @@ body > .container {
 
 nav.header-menu ul {
   margin-top: 25px;
+}
+
+// table > thead > tr > th {
+//   text-align: center;
+// }
+
+.user-hail {
+  font-size: 12px;
+  line-height: 40px;
+  padding-top: 5px;
 }

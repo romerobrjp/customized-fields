@@ -1,17 +1,36 @@
-<%= form_for(@field) do |f| %>
-  <% if @field.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@field.errors.count, "error") %> prohibited this field from being saved:</h2>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-centered">
+    <%= form_for(@field) do |f| %>
+      <% if @field.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@field.errors.count, "error") %> prohibited this field from being saved:</h2>
 
-      <ul>
-      <% @field.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @field.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+      <div class="form-group">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+        <br />
+
+        <%= f.label :field_type %><br />
+        <%= f.select :field_type, options_from_collection_for_select(Field.types.entries, :first, :last), class: 'selectpicker' %>
+        <br /><br />
+
+        <%= f.label :description %><br />
+        <%= f.text_field :description, class: 'form-control' %>
+        <br />
+      </div>
+
+      <div class="actions text-center">
+        <%= f.submit 'Submit', class: 'btn btn-success'%>
+        <%= link_to 'Back', contacts_path, class: 'btn btn-danger' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

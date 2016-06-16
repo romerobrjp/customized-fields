@@ -1,17 +1,42 @@
-<%= form_for(@contact) do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-centered">
+    <%= form_for(@contact) do |f| %>
+      <% if @contact.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-      <ul>
-      <% @contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @contact.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+      <div class="form-group">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+        <br />
+
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class: 'form-control' %>
+        <br />
+
+        <% @user_fields.each do |user_field| %>
+          <%= f.label user_field.name %> <br />
+          <%= generate_custom_field(
+            user_field.name, 
+            user_field.field_type, 
+            FieldValueQuery.new.search.specific(@contact.user_id, @contact.id, user_field.id).pluck('value').join(' '), nil)
+          %>
+          <br />
+        <% end %>
+      </div>
+
+      <div class="actions text-center">
+        <%= f.submit 'Submit', class: 'btn btn-success'%>
+        <%= link_to 'Back', contacts_path, class: 'btn btn-default' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

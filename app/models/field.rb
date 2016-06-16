@@ -1,5 +1,5 @@
 class Field < ActiveRecord::Base
-  belongs_to :contact
-  validates_presence_of :name, :type
-  enum status: [:text_field, :text_area, :select_tag]
+  belongs_to :user
+  validates_presence_of :name, :field_type
+  enum types: {text_field: 'Texto', text_area: 'Área de texto', select_tag: 'Combobox'}
 end

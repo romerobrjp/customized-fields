@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  def index 
-    
+  before_filter :require_authentication
+
+  def index
+
   end
 end
