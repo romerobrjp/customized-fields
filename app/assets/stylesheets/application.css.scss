@@ -10,13 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
+ *= require bootstrap-select
+
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap-select";
 
 body > .container {
   margin-top: 3em;
@@ -43,12 +44,12 @@ nav.header-menu ul {
   margin-top: 25px;
 }
 
-// table > thead > tr > th {
-//   text-align: center;
-// }
-
 .user-hail {
   font-size: 12px;
   line-height: 40px;
   padding-top: 5px;
+}
+
+.jumbotron {
+  margin-top: 30px;
 }

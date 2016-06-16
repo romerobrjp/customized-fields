@@ -15,7 +15,13 @@ class FieldsController < ApplicationController
 
   def create
     @field = Field.new(field_params)
-    @field.user = current_user    
+    @field.user = current_user
+
+    # if (field_params[:combobox_key_values].present?)
+    #   combobox_key_values = field_params[:combobox_key_values]
+    #   key_values_array = field_params[:combobox_key_values].split(',')
+    #   key_values_array.map { |i| i.split(':').each { |e| puts e.strip! } }.to_h
+    # end
 
     if @field.save
       redirect_to :fields, notice: "Field created successfully"
@@ -47,7 +53,7 @@ class FieldsController < ApplicationController
   private
 
   def field_params
-    params.require(:field).permit(:name, :field_type, :description)
+    params.require(:field).permit(:name, :field_type, :description, :combobox_key_values)
   end
 
   def set_field

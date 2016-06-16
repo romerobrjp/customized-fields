@@ -39,7 +39,7 @@ class ContactsController < ApplicationController
     custom_fields_params.each do |key, val|
       custom_field = Field.joins(:user).where(user_id: current_user.id, name: key).first
       field_value = FieldValueQuery.new.search.specific(current_user.id, @contact.id, custom_field.id)
-      byebug
+      
       if field_value.exists?
         field_value.first.update(value: val)
       else

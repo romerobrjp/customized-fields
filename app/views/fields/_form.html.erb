@@ -19,8 +19,14 @@
         <br />
 
         <%= f.label :field_type %><br />
-        <%= f.select :field_type, options_from_collection_for_select(Field.types.entries, :first, :last), class: 'selectpicker' %>
+        <%= f.select :field_type, options_from_collection_for_select(Field.types.entries, :first, :last), {}, onchange: "display_combobox_aux_field()" %>
         <br /><br />
+
+        <div id="combobox_aux_field" style="display: none;">
+          <label> Combobox key-values (ex.: val1: Value 1, val2: Value 2) </label> <br />
+          <%= f.text_field :combobox_key_values, class: 'form-control' %>
+          <br />
+        </div>
 
         <%= f.label :description %><br />
         <%= f.text_field :description, class: 'form-control' %>
@@ -29,7 +35,7 @@
 
       <div class="actions text-center">
         <%= f.submit 'Submit', class: 'btn btn-success'%>
-        <%= link_to 'Back', contacts_path, class: 'btn btn-danger' %>
+        <%= link_to 'Back', fields_path, class: 'btn btn-default' %>
       </div>
     <% end %>
   </div>
