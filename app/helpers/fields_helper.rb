@@ -1,6 +1,5 @@
 module FieldsHelper
   def generate_custom_field(field_name, field_type, field_value, options_string_values, disabled=nil)
-    puts ">>>>>>> #{disabled}"
     case field_type
     when 'text_field'
       text_field('custom_field', field_name, class: 'form-control', value: field_value)
