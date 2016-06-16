@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby "2.3.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
@@ -54,4 +54,8 @@ group :test do
   gem 'shoulda-matchers', '~> 2.0'
   gem 'factory_girl_rails'
   gem 'faker'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
