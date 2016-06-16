@@ -19,7 +19,7 @@
         <br />
 
         <%= f.label :field_type %><br />
-        <%= f.select :field_type, options_from_collection_for_select(Field.types.entries, :first, :last), {}, onchange: "display_combobox_aux_field()" %>
+        <%= f.select :field_type, options_from_collection_for_select(Field.types.entries, :first, :last, @field.field_type), {}, onchange: "display_combobox_aux_field()" %>
         <br /><br />
 
         <div id="combobox_aux_field" style="display: none;">

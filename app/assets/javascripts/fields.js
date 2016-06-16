@@ -9,3 +9,11 @@ function display_combobox_aux_field() {
   else
     $('#combobox_aux_field').hide();
 }
+
+$("#field_field_type").ready(function() {
+  var sel_val = $('#field_field_type').val();
+  if (sel_val == 'combobox')
+    $('#combobox_aux_field').show();
+  else
+    $('#combobox_aux_field').hide();
+});
