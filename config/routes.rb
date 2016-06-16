@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :fields
   resources :contacts
   devise_for :users
-  #devise_for :users, :controllers => {sessions: "users/sessions"}
+  get 'about_challange' => 'application#about_challange'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
