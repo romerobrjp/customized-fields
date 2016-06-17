@@ -8,12 +8,8 @@ class FieldQuery
   end
 
   module Scopes
-    def from_user(user_id)
-      joins(:user).where(user_id: user_id)
-    end
-
-    def combobox_key_values_from_user(user_id)
-      joins(:user).where(user_id: 1).where.not(combobox_key_values: nil).pluck('combobox_key_values')
+    def combobox_key_values
+      where(field_type: Field.types[:combobox]).pluck('combobox_key_values')
     end
   end
 end
