@@ -1,8 +1,10 @@
-# Contacts list with custom fields
+# ResultadosDigitais challange
+
+## Contacts list with custom fields
 
 This application simulates a contacts list with a login/logout system. It must allow users to create customized fields (text field, text area, combobox) that are not shared with other users.
 
-# Getting started
+## Getting started
 
 - Clone this repository
 - Synchronize your Ruby version to the same of the specified in the Gemfile
@@ -15,4 +17,4 @@ This application simulates a contacts list with a login/logout system. It must a
 - Open your browser in localhost:3000
 
 ## Note
-- You must create an account and sign in so that you can use the contacts list app
+- In order to use the contacts list app, you must create an account and sign in.
