@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
 
     custom_fields_params.each do |key, val|
       custom_field = Field.joins(:user).where(user_id: current_user.id, name: key).first
-      field_value = FieldValue.new(value: val, user_id: current_user.id, contact: @contact, field_id: custom_field.id)
+      field_value = FieldValue.new(value: val, contact: @contact, field_id: custom_field.id)
       field_value.save
     end
 
