@@ -18,3 +18,4 @@ This application simulates a contacts list with a login/logout system. It must a
 
 ## Note
 - In order to use the contacts list app, you must create an account and sign in.
+- Remember to install Postgres in your machine or another database your prefer.
