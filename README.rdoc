@@ -1,28 +1,17 @@
-== README
+## Contacts list with custom fields
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application simulates a contacts list with a login/logout system. It must allow users to create customized fields (text field, text area, combobox) that are not shared with other users.
 
-Things you may want to cover:
+# Getting started
 
-* Ruby version
+- Clone this repository
+- Execute bundle install command to prepare and configure the gems
+- Change the username and password values of your database in database.yml file
+- If do not use Postgres as your database you need to chance the configuration in database.yml to your favorite DBMS
+- Create the database: "rake db:create"
+- Execute the migrations: "rake db:migrate"
+- Run the server: "rails s"
+- Open your browser in localhost:3000
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+# Extras
+- You must create your account and sign in to use the contacts list system
