@@ -1,9 +1,9 @@
 class FieldsController < ApplicationController
   before_action :set_field, only: [:show, :edit, :update, :destroy]
-  before_filter :require_authentication
+  before_filter :authenticate_user!
 
   def index
-    @fields = FieldQuery.new.search.from_user(current_user)
+    @fields = current_user.fields
   end
 
   def new
@@ -16,7 +16,7 @@ class FieldsController < ApplicationController
   def create
     @field = Field.new(field_params)
     @field.user = current_user
-    
+
     if @field.save
       redirect_to :fields, notice: "Field created successfully"
     else

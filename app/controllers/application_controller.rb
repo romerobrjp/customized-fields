@@ -3,12 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception  
 
-  def about_challange
-  end
-
-  protected
-
-  def require_authentication
-    redirect_to new_user_session_path if current_user.blank?      
+  def about_challenge
   end
 end

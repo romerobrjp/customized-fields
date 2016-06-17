@@ -22,14 +22,14 @@
             <strong> <%= user_field.name %>: </strong>
             <% if user_field.field_type == 'combobox' %>
               <%= generate_custom_field(
-                user_field.name, 
-                user_field.field_type, 
-                FieldValueQuery.new.search.specific(@contact.user_id, @contact.id, user_field.id).pluck('value').join(' '), 
-                FieldQuery.new.search.combobox_key_values_from_user(@contact.user_id), 
+                user_field.name,
+                user_field.field_type,
+                FieldValueQuery.new(user_field.field_values).search.specific(@contact.id, user_field.id).pluck('value').join(' '),
+                user_field.combobox_key_values,
                 'disabled')
               %>
             <% else %>
-              <%= FieldValueQuery.new.search.specific(@contact.user_id, @contact.id, user_field.id).pluck('value').join(' ') %>
+              <%= FieldValueQuery.new(user_field.field_values).search.specific(@contact.id, user_field.id).pluck('value').join(' ') %>
             <% end %>
           </h4>
           <br/>

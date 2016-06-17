@@ -6,7 +6,7 @@
         <li role="presentation"><%= link_to "My Fields", fields_path %></li>
       <% end %>
 
-        <li role="presentation"><a href="<%= about_challange_path %>">About this challenge</a></li>
+        <li role="presentation"><a href="<%= about_challenge_path %>">About this challenge</a></li>
       
       <% if current_user %>
         <li role="presentation"><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>

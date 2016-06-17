@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @contacts = Contact.where(user: current_user)    
+    @contacts = Contact.where(user: current_user)
   end
 
   def new
@@ -38,13 +38,13 @@ class ContactsController < ApplicationController
   def update
     custom_fields_params.each do |key, val|
       custom_field = Field.joins(:user).where(user_id: current_user.id, name: key).first
-      field_value = FieldValueQuery.new.search.specific(current_user.id, @contact.id, custom_field.id)
+      field_value = FieldValueQuery.new(custom_field.field_values).search.specific(@contact.id, custom_field.id)
       #field_value = FieldValueQuery.new(custom_field.field_values).search.from_contact(@contact.id))
-      
+
       if field_value.exists?
         field_value.first.update(value: val)
       else
-        field_value = FieldValue.new(value: val, user_id: current_user.id, contact: @contact, field_id: custom_field.id)
+        field_value = FieldValue.new(value: val, contact: @contact, field_id: custom_field.id)
         field_value.save
       end
     end
