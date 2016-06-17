@@ -1,4 +1,4 @@
-## Contacts list with custom fields
+# Contacts list with custom fields
 
 This application simulates a contacts list with a login/logout system. It must allow users to create customized fields (text field, text area, combobox) that are not shared with other users.
 
@@ -13,5 +13,5 @@ This application simulates a contacts list with a login/logout system. It must a
 - Run the server: "rails s"
 - Open your browser in localhost:3000
 
-# Extras
+## Extras
 - You must create your account and sign in to use the contacts list system
