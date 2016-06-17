@@ -5,7 +5,7 @@ This application simulates a contacts list with a login/logout system. It must a
 # Getting started
 
 - Clone this repository
-- Execute bundle install command to prepare and configure the gems
+- Execute "bundle install" command to prepare and configure the gems
 - Change the username and password values of your database in database.yml file
 - If do not use Postgres as your database you need to chance the configuration in database.yml to your favorite DBMS
 - Create the database: "rake db:create"
@@ -13,5 +13,5 @@ This application simulates a contacts list with a login/logout system. It must a
 - Run the server: "rails s"
 - Open your browser in localhost:3000
 
-## Extras
-- You must create your account and sign in to use the contacts list system
+## Note
+- You must create an account and sign in so that you can use the contacts list app
