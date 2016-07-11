@@ -12,4 +12,10 @@ describe Field do
 
     expect(field.user).to be_valid
   end
+
+  it "is active" do
+    field = create(:field)
+
+    expect(field.active).to be_truthy
+  end
 end
