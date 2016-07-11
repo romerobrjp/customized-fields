@@ -46,11 +46,13 @@ group :development do
   gem 'spring'
 end
 
-group :test do
-  gem 'shoulda', '~> 3.5'
-  gem 'shoulda-matchers', '~> 2.0'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :production do
